@@ -8,6 +8,7 @@ import Skill from "./components/Skill";
 import Experience from "./components/Experience";
 import AboutMe from "./components/AboutMe";
 import Thumbnail from "./components/Thumbnail";
+import Education from "./components/Education";
 
 type SectionsComponentProp = { id: string, component: ReactNode }
 const Home = () => {
@@ -30,6 +31,10 @@ const Home = () => {
       id: 'experiences',
       component: <Experience />
     },
+    {
+      id: 'education',
+      component: <Education />
+    }
   ]
 
   const scrollToSection = (id: string) => {

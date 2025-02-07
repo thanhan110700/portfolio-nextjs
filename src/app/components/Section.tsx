@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 export type SectionProps = {
     children: React.ReactNode;
-    id: string;
+    id?: string;
     image: string;
 }
 const Section = ({ children, id, image }: SectionProps) => {

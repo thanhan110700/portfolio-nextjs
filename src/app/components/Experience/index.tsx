@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Section from "../Section";
 import Image from "next/image";
+import Tooltip from "../Tooltip";
 
 type ExperienceProps = {
     ref?: React.RefObject<HTMLDivElement>
@@ -9,16 +10,20 @@ type ExperienceProps = {
 const Experience = ({ ref }: ExperienceProps) => {
     const experiences = [
         {
-            year: "2022-2025",
+            year: "2022 - Now",
             title: "Backend Developer",
             company: "Kozocom Vietnam",
-            description: "I'm working on a project that helps people to find a job easily"
+            description: "I'm working on a project that helps people to find a job easily and Audit app",
+            url: "https://kozocom.vn",
+            message: "07/2022 - Now",
         },
         {
             year: "2022",
             title: "Intern",
             company: "Kozocom Vietnam",
-            description: "Developed and maintained multiple client projects using MERN stack"
+            description: "I'm working on a project that helps people to find a job easily",
+            url: "https://kozocom.vn",
+            message: "05/2022 - 07/2022",
         },
     ];
 
@@ -30,36 +35,41 @@ const Experience = ({ ref }: ExperienceProps) => {
                     <div className="relative">
                         <div className="absolute w-1 md:w-2 bg-black dark:bg-white h-full left-1/2 transform -translate-x-1/2"></div>
                         {
-                            experiences.map(({ year, description, title, company }) => (
+                            experiences.map(({ year, description, title, company, message }) => (
                                 <div key={year} className="mb-20 mt-20 flex items-center w-full">
                                     <div className="w-1/2 text-right pr-5 md:pr-12">
-                                        <motion.div
-                                            className="inline-block bg-gray-100 dark:bg-black px-4 py-2 rounded-lg cursor-pointer bg-opacity-40 dark:bg-opacity-40"
-                                            whileHover={{
-                                                scale: [null, 1.1, 1.2],
-                                                transition: {
-                                                    duration: 0.5,
-                                                    times: [0, 0.6, 1],
-                                                    ease: ["easeInOut", "easeOut"],
-                                                },
-                                            }}
-                                            transition={{
-                                                duration: 0.3,
-                                                ease: "easeOut",
-                                            }}
-                                        >
-                                            <h5 className="text-lg md:text-2xl font-semibold text-black dark:text-white">{year}</h5>
-                                        </motion.div>
+                                        <Tooltip message={message}>
+                                            <motion.div
+                                                className="inline-block bg-gray-100 dark:bg-black px-4 py-2 rounded-lg cursor-pointer bg-opacity-40 dark:bg-opacity-40"
+                                                whileHover={{
+                                                    scale: [null, 1.1],
+                                                    transition: {
+                                                        duration: 0.5,
+                                                        times: [0, 0.6],
+                                                        ease: ["easeInOut", "easeOut"],
+                                                    },
+                                                }}
+                                                transition={{
+                                                    duration: 0.3,
+                                                    ease: "easeOut",
+                                                }}
+                                            >
+                                                <h5 className="text-lg md:text-2xl font-semibold text-black dark:text-white">{year}</h5>
+                                            </motion.div>
+                                        </Tooltip>
                                     </div>
                                     <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-black dark:bg-white"></div>
-                                    <motion.div className="w-1/2 pl-5 md:pl-12" whileHover={{
-                                        scale: [null, 1.1],
-                                        transition: {
-                                            duration: 0.5,
-                                            times: [0, 0.6],
-                                            ease: ["easeInOut", "easeOut"],
-                                        },
-                                    }}
+                                    <motion.div
+                                        data-tooltip-target={`tooltip-experience-${year}`}
+                                        className="w-1/2 pl-5 md:pl-12 cursor-pointer" whileHover={{
+                                            scale: [null, 1.1],
+                                            transition: {
+                                                duration: 0.5,
+                                                times: [0, 0.6],
+                                                ease: ["easeInOut", "easeOut"],
+                                            },
+                                        }}
+                                        onClick={() => window.open("https://kozocom.vn")}
                                         transition={{
                                             duration: 0.3,
                                             ease: "easeOut",
@@ -91,8 +101,8 @@ const Experience = ({ ref }: ExperienceProps) => {
                     </div>
                 </div>
             </div>
-        </Section>
-    </div>
+        </Section >
+    </div >
 };
 
 export default Experience;

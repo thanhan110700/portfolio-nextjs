@@ -15,7 +15,7 @@ const Header = ({ scrollToSection }: HeaderProps) => {
         damping: 30,
         restDelta: 0.001,
     })
-    return <header className="fixed w-full top-0 z-50 bg-orange-400 dark:bg-slate-800 backdrop-blur-md bg-opacity-50 shadow-lg">
+    return <header className="fixed w-full top-0 z-50 bg-orange-400 dark:bg-slate-800 backdrop-blur-md dark:bg-opacity-60 bg-opacity-50 shadow-lg">
         <motion.div
             id="scroll-indicator"
             style={{
